@@ -9,7 +9,7 @@ def log_filter(input):
     log.setLevel(logging.INFO)
 
     for item in input:
-        log.info(f"{input} produced {item}")
+        log.info(f"{input} => {item}")
         yield item
 
 
@@ -51,7 +51,10 @@ filters = [
     dict_filter,
     serie_a_filter,
     log_filter,
-    sum_filter
+    sum_filter,
 ]
 
-pipeline = create_processing_pipeline(['./techcrunch_funding.csv'], filters)
+pipeline = create_processing_pipeline(
+    ['./crunchbase_funding.csv'], filters)
+
+print(next(pipeline))
